@@ -1,7 +1,8 @@
 #pragma once
 
 #include "wx/wx.h"
-
+#include <vector>
+#include <numeric>
 
 class cMain : public wxFrame
 {
@@ -20,7 +21,6 @@ private:
 public:
 	void OnOpButtonPress(wxCommandEvent& evt);
 	void OnClButtonPress(wxCommandEvent& evt);
-
 
 	wxDECLARE_EVENT_TABLE();
 };

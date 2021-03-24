@@ -26,10 +26,24 @@ void cMain::OnClButtonPress(wxCommandEvent& evt)
 void cMain::OnOpButtonPress(wxCommandEvent& evt)
 {
 	wxString sSet;
+	std::vector<wxString> vsSet;
+
 	sSet = textBox->GetLineText(0);
 
-	for (auto i : sSet)
-		if (*i == ' ')
+	for (int i = 0; i < sSet.Len(); i++)
+		if (sSet.at(i) == ' ')
+		{
+			vsSet.push_back(sSet.SubString(0, i - 1));
+			sSet.Remove(0, i);
+		}
+	vsSet.push_back(sSet);
+
+	random_shuffle(vsSet.begin(), vsSet.end());
+
+	textBox->Clear();
+
+	for (auto i : vsSet)
+		textBox->AppendText(i);
 
 
 	evt.Skip();
